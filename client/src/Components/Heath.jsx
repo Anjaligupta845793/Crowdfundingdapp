@@ -4,7 +4,7 @@ import { FundCam } from './FundCam';
 import { Loader } from './Loader';
 
 export const Health = () => {
-    const {health,healthloader,healdis,cardclick} = useContext(TransactionContext);
+    const {health,healthloader,healthdiscription,cardclick} = useContext(TransactionContext);
     const [show, setshow] = useState(false)
      
    
@@ -48,7 +48,7 @@ export const Health = () => {
               <h3 className="font-semibold">{item.title}</h3>
              
               
-               <p>{ healdis.length && healdis.current[index].discription}</p>
+               <p>{ healthdiscription.length && healthdiscription.current[index].discription}</p>
               
               <p className="text-sm leading-none">{item.category}</p>
                <button className='border-1 border-solid border-gray-500 bg-black text-white py-1 rounded px-2' onClick={() => cardclick(item,setshow)}>donate</button>

@@ -26,9 +26,9 @@ import contract_address from "../abi/address.json";
   const [healthloader, sethealthloader] = useState(true)
   const [animalloader, setanimalloader] = useState(true)
   const [eduloader, seteduloader] = useState(true);
-  const healdis = useRef([]);
-  const anidis = useRef([]);
-  const edudis = useRef([]);
+  const healthdiscription = useRef([]);
+  const animaldiscription = useRef([]);
+  const edudiscription = useRef([]);
   const cards = useRef([]);
   const discard = useRef([]);
   const [cardloader, setcardloader] = useState(true)
@@ -171,11 +171,12 @@ import contract_address from "../abi/address.json";
    }
    const fundcamp = async(id, amount) => {
     console.log(amount)
-          const price = ethers.utils.parseEther(amount)
+          const price = amount
           console.log(price)
           console.log("fetching...")
+          console.log(amount* 10^18)
           console.log(id)
-           await contract.current.FundCampaign(id,price,{gasLimit:300000});
+           await contract.current.FundCampaign(id,{gasLimit:300000 , value : amount});
 
    }
    const card = async(item) => {
@@ -269,7 +270,7 @@ setfetchloader(false)
         console.log("fetching...")
         for(let i = 1 ; i <= count;i++ ){
              const item = await contract.current.Campaigns(i);
-           await fetchingdata(item,healdis);
+           await fetchingdata(item,healthdiscription);
             console.log(item.Category)
           
              if(item.Category === "health"){
@@ -297,7 +298,7 @@ setfetchloader(false)
         console.log("fetching...")
         for(let i = 1 ; i <= count;i++ ){
              const item = await contract.current.Campaigns(i);
-           await fetchingdata(item,anidis);
+           await fetchingdata(item,animaldiscription);
            
           
              if(item.Category === "animal"){
@@ -325,7 +326,7 @@ setfetchloader(false)
         console.log("fetching...")
         for(let i = 1 ; i <= count;i++ ){
              const item = await contract.current.Campaigns(i);
-           await fetchingdata(item,edudis);
+           await fetchingdata(item,edudiscription);
            console.log(item.Category
 )
           
@@ -349,7 +350,37 @@ setfetchloader(false)
 
    }
     return(
-       <TransactionContext.Provider  value={{ConnectWallet,Account,setamount,amount,imagehandler,discription,setdiscription,discriptionhandler,setcategory,settitle,Campaign,fetchloader,first,dashboard,dashbloader,dashdiscription,education,health,animal,eduloader,animalloader,healthloader,healdis,anidis,edudis,category,card,cards,cardclick,cardloader,fundcamp}}>
+       <TransactionContext.Provider  value={{ConnectWallet,
+       Account,
+       setamount,
+       amount,
+       imagehandler,
+       discription,
+       setdiscription,
+       discriptionhandler,
+       setcategory,
+       settitle,
+       Campaign,
+       fetchloader,
+       first,
+       dashboard,
+       dashbloader,
+       dashdiscription,
+       education,
+       health,
+       animal,
+       eduloader,
+       animalloader,
+       healthloader,
+       healthdiscription,
+       animaldiscription,
+       edudiscription,
+       category,
+       card,
+       cards,
+       cardclick,
+       cardloader,
+       fundcamp}}>
         {children}
     </TransactionContext.Provider>
     )

@@ -4,7 +4,7 @@ import { Loader } from './Loader';
 import { FundCam } from './FundCam';
 
 export const Animal = () => {
-    const {animal,animalloader,anidis,cardclick,card,cards,cardloader} = useContext(TransactionContext);
+    const {animal,animalloader,animaldiscription,cardclick,cardloader} = useContext(TransactionContext);
     const [show, setshow] = useState(false)
      
    
@@ -51,7 +51,7 @@ export const Animal = () => {
               <h3 className="font-semibold">{item.title}</h3>
              
               
-               <p>{anidis.current[index].discription}</p>
+               <p>{animaldiscription.current[index].discription}</p>
               
               <p className="text-sm leading-none">{item.category}</p>
               <button className='border-1 border-solid border-gray-500 bg-black text-white py-1 rounded px-2' onClick={() => cardclick(item,setshow)}>donate</button>

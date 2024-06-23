@@ -4,7 +4,7 @@ import { FundCam } from './FundCam';
 import { Loader } from './Loader';
 
 export const Education = () => {
-    const {education,eduloader,edudis,cardclick} = useContext(TransactionContext);
+    const {education,eduloader, edudiscription,cardclick} = useContext(TransactionContext);
     const [show, setshow] = useState(false)
       
    
@@ -51,7 +51,7 @@ export const Education = () => {
               <h3 className="font-semibold">{item.title}</h3>
              
               
-               <p>{edudis.current[index].discription}</p>
+               <p>{ edudiscription.current[index].discription}</p>
               
               <p className="text-sm leading-none">{item.category}</p>
                <button className='border-1 border-solid border-gray-500 bg-black text-white py-1 rounded px-2' onClick={() => cardclick(item,setshow)}>donate</button>
